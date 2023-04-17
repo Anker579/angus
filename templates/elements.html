@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>About Me</title>
+		<meta charset="utf-8" />
+		<link rel="icon" href="static/images/favicon2.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="{{ url_for('home') }}">Angus Howard - Digital CV</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="{{ url_for('home') }}">Home</a></li>
+											<li><a href="{{ url_for('generic') }}">Work Experience</a></li>
+											<li><a href="{{ url_for('elements') }}">About Me</a></li>
+
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>About Me</h2>
+							<p>My Personal Statement, CV, A Level History Coursework and my EPQ</p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<section>
+									<header>
+										<h4>My A Level History Coursework</h4>
+										<p>Question: Historians have disagreed about how far Mao was to blame for the failure of the Great Leap Forward and the Great Famine more than any other cause, what is your view about how far Mao was to blame?</p>
+										<h5>Introduction extract</h5>
+										<blockquote>By 1958, the Chinese Communist Party (CCP) had used the first Five Year Plan, the Hundred Flowers Campaign and their propaganda programmes to consolidate their economic, political and social position in China. As a result, Mao’s ambitions were high, and he vowed to overtake Britain economically in 15 years at a meeting with Khrushchev. However, the scope of the failure of the subsequent campaign and the destruction it caused can be recorded as one of the biggest man-made calamities of the 20th Century, with the resultant casualties numbering in the tens of millions. The debate over the causes have been categorised into four generic ideas: the failures of central government, that of local government, the impact of natural disasters, and 4 the USSR’s split with China. The nature of records from the Chinese Communist Party is one of pro-CCP agenda and misinformation, as well as the extensive censorship on any media published about the period in China, this means that the amount that official records can be used is questionable and historians in the period straight after the Great Leap Forward had little access to accurate accounts, consequently, there is still much debate over the GLF. Furthermore, throughout this piece both the Great Leap Forward (GLF) and Great Famine (GF) will be referenced in relation to their causes, yet in many instances the causes of one can be considered the cause of both, since the GLF itself was a direct source of the famine.
+										</blockquote>
+									</header>
+									<h5>Open the pdf <a href="/static/cw.pdf">here</a></h5>
+									<hr />
+									<header>
+										<h4>My Personal Statement</h4>
+										<h5>Find it <a href="{{ url_for('PS')}}">here</a></h5>
+									</header>
+									<hr />
+									<header>
+										<h4>My Extended Project Qualification</h4>
+									</header>
+									<h5>Open the pdf <a href="/static/capvcomm.pdf">here</a></h5>
+									<object data="/static/capvcomm.pdf" type="application/pdf" width="1200" height="800">
+                                        <p>It appears your browser does not support PDFs. You can <a href="/static/capvcomm.pdf">download the PDF file here.</a></p>
+                                    </object>
+									<hr />
+									<h4>AS & A Levels</h4>
+									<h5>Obtained Summer 2022</h5>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Subject</th>
+													<th>Exam Board</th>
+													<th>Letter Grade</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Mathematics</td>
+													<td>Pearson Edexcel</td>
+													<td>A*</td>
+												</tr>
+												<tr>
+													<td>Physics</td>
+													<td>Pearson Edexcel</td>
+													<td>A</td>
+												</tr>
+												<tr>
+													<td>History</td>
+													<td>Pearson Edexcel</td>
+													<td>A</td>
+												</tr>
+												<tr>
+													<td>EPQ (AS Level)</td>
+													<td>AQA</td>
+													<td>A</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<hr />
+									<h4>GCSEs</h4>
+									<h5>Obtained Summer 2020</h5>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Subject</th>
+													<th>Exam Board</th>
+													<th>Number Grade</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Mathematics</td>
+													<td>Pearson Edexcel</td>
+													<td>9</td>
+												</tr>
+												<tr>
+													<td>Statistics</td>
+													<td>Pearson Edexcel</td>
+													<td>8</td>
+												</tr>
+												<tr>
+													<td>History</td>
+													<td>OCR</td>
+													<td>9</td>
+												</tr>
+												<tr>
+													<td>Chemistry</td>
+													<td>AQA</td>
+													<td>9</td>
+												</tr>
+												<tr>
+													<td>Physics</td>
+													<td>AQA</td>
+													<td>9</td>
+												</tr>
+												<tr>
+													<td>Biology</td>
+													<td>AQA</td>
+													<td>8</td>
+												</tr>
+												<tr>
+													<td>Egnlish Language</td>
+													<td>AQA</td>
+													<td>8</td>
+												</tr>
+												<tr>
+													<td>English Literature</td>
+													<td>AQA</td>
+													<td>8</td>
+												</tr>
+												<tr>
+													<td>Fine Art</td>
+													<td>AQA</td>
+													<td>7</td>
+												</tr>
+												<tr>
+													<td>Spanish</td>
+													<td>AQA</td>
+													<td>7</td>
+												</tr>
+											</tbody>
+
+										</table>
+									</div>
+
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
