@@ -6,8 +6,6 @@ import plotly
 import plotly.express as px
 from db_data_fetcher import DBCommunicator
 
-load_dotenv()
-
 app = Flask(__name__)
 
 
