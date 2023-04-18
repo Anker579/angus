@@ -1,9 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 import json
+from dotenv import load_dotenv
 import plotly
 import plotly.express as px
 from db_data_fetcher import DBCommunicator
+
+load_dotenv()
 
 app = Flask(__name__)
 
