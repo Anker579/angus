@@ -33,7 +33,7 @@ def rpi():
     curs = my_db_comm.create_cursor(db=db)
     sql = my_db_comm.create_sql_string()
     curs.execute(sql)
-    result = db.fetchall()
+    result = curs.fetchall()
     df = my_db_comm.create_df(results=result)
 
     fig = px.scatter(df, x='time', y='temp_c', title='Temperature vs Time')
