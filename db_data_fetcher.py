@@ -12,10 +12,10 @@ load_dotenv(find_dotenv())
 class DBCommunicator():
 
     def __init__(self) -> None:
-        self.HOST = os.environ.get("HOST")
-        self.DATABASE = os.environ.get("DATABASE")
-        self.USER = os.environ.get("USER")
-        self.PASSWORD = os.environ.get("PASSWORD")
+        self.HOST = os.getenv("HOST")
+        self.DATABASE = os.getenv("DATABASE")
+        self.USER = os.getenv("USER")
+        self.PASSWORD = os.getenv("PASSWORD")
 
     def db_connector(self):
         print(self.HOST, self.DATABASE, self.USER, self.PASSWORD)
