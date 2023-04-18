@@ -1,13 +1,13 @@
 import MySQLdb
 import datetime as dt
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
 import pandas as pd
 import plotly.express as px
 # from dotenv import dotenv_values
 # config = dotenv_values(".env")
 
-load_dotenv("./.env")
+load_dotenv(find_dotenv())
 
 class DBCommunicator():
 
