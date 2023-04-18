@@ -7,7 +7,7 @@ import plotly.express as px
 # from dotenv import dotenv_values
 # config = dotenv_values(".env")
 
-load_dotenv()
+load_dotenv("./.env")
 
 class DBCommunicator():
 
@@ -18,6 +18,7 @@ class DBCommunicator():
         self.PASSWORD = os.environ.get("PASSWORD")
 
     def db_connector(self):
+        print(self.HOST, self.DATABASE, self.USER, self.PASSWORD)
         db = MySQLdb.connect(host=self.HOST,
             database=self.DATABASE,
             user=self.USER,
