@@ -7,7 +7,7 @@ import plotly.express as px
 # from dotenv import dotenv_values
 # config = dotenv_values(".env")
 
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
 
 class DBCommunicator():
 
