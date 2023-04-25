@@ -36,11 +36,16 @@ def rpi():
     result = curs.fetchall()
     df = my_db_comm.create_df(results=result)
 
-    fig = px.scatter(df, x='time', y='temp_c', title='Temperature vs Time',
+    fig = px.scatter(df, x='time', y='temp_c', title='',
                      labels={
-                        "time": "Date",
+                        "time": "",
                         "temp_c": "Temperature /°C"
-                     })
+                     },
+                     
+                     )
+    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)'})
+    fig.update_xaxes(linecolor="#444")
+    fig.update_yaxes(linecolor="#444")
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     return render_template('Rpi.html', graphJSON=graphJSON)
