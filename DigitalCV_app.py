@@ -48,10 +48,6 @@ def PS():
 def elements():
     return render_template('elements.html')
 
-@app.route('/rpi')
-def rpi():
-
-=======
 @app.route('/tutoring')
 def tutoring():
     return render_template('tutoring.html')
