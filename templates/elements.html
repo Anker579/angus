@@ -30,7 +30,12 @@
 											<li><a href="{{ url_for('home') }}">Home</a></li>
 											<li><a href="{{ url_for('generic') }}">Work Experience</a></li>
 											<li><a href="{{ url_for('elements') }}">About Me</a></li>
+<<<<<<< Updated upstream
 											<li><a href="{{ url_for('rpi') }}">Local Weather Project</a></li>
+=======
+											<li><a href="{{ url_for('tutoring') }}">Tutoring</a></li>
+											<li><a href="{{ url_for('projects') }}">Personal Projects</a></li>
+>>>>>>> Stashed changes
 
 										</ul>
 									</div>
@@ -43,12 +48,41 @@
 					<article id="main">
 						<header>
 							<h2>About Me</h2>
-							<p>My Personal Statement, CV, A Level History Coursework and my EPQ</p>
+							<p>CV, My Personal Statement, A Level History Coursework and my EPQ</p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
-
 								<section>
+									<header>
+										<h4>My CV</h4>
+									</header>
+									<h5>Open the pdf <a href="/static/AHoward_CV_07_25.pdf">here</a></h5>
+									<object data="/static/AHoward_CV_07_25.pdf" type="application/pdf" width="1050" height="800">
+                                        <p>It appears your browser does not support PDFs. You can <a href="/static/capvcomm.pdf">download the PDF file here.</a></p>
+                                    </object>
+									<hr/>
+									<header><h4>My University Grades</h4></header>
+										<table>
+											<thead>
+												<tr>
+													<th>Year of Study</th>
+													<th>Avergae Mark Achieved (%)</th>
+													<th>Grade</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>First Year</td>
+													<td>66.7</td>
+													<td>2.1</td>
+												</tr>
+												<tr>
+													<td>Second Year</td>
+													<td>73.5</td>
+													<td>1.1</td>
+												</tr>
+											</table>
+									<hr/>
 									<header>
 										<h4>My A Level History Coursework</h4>
 										<p>Question: Historians have disagreed about how far Mao was to blame for the failure of the Great Leap Forward and the Great Famine more than any other cause, what is your view about how far Mao was to blame?</p>
@@ -59,7 +93,7 @@
 									<h5>Open the pdf <a href="/static/cw.pdf">here</a></h5>
 									<hr />
 									<header>
-										<h4>My Personal Statement</h4>
+										<h4>My UCAS Applications Personal Statement</h4>
 										<h5>Find it <a href="{{ url_for('PS')}}">here</a></h5>
 									</header>
 									<hr />
@@ -67,7 +101,7 @@
 										<h4>My Extended Project Qualification</h4>
 									</header>
 									<h5>Open the pdf <a href="/static/capvcomm.pdf">here</a></h5>
-									<object data="/static/capvcomm.pdf" type="application/pdf" width="1200" height="800">
+									<object data="/static/capvcomm.pdf" type="application/pdf" width="1050" height="800">
                                         <p>It appears your browser does not support PDFs. You can <a href="/static/capvcomm.pdf">download the PDF file here.</a></p>
                                     </object>
 									<hr />

@@ -4,10 +4,10 @@ from dotenv import load_dotenv, find_dotenv
 import os
 import pandas as pd
 import plotly.express as px
-# from dotenv import dotenv_values
-# config = dotenv_values(".env")
+from dotenv import dotenv_values
+config = dotenv_values(".env")
 
-# load_dotenv(find_dotenv())
+load_dotenv(find_dotenv())
 
 class DBCommunicator():
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     curs = my_db_comm.create_cursor(db=db)
     sql = my_db_comm.create_sql_string()
     curs.execute(sql)
-    result = db.fetchall()
+    result = curs.fetchall()
     df = my_db_comm.create_df(results=result)
     fig = px.scatter(df, x='time', y='temp_c', title='Temperature vs Time')
     fig.show()

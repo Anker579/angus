@@ -8,6 +8,29 @@ from db_data_fetcher import DBCommunicator
 
 app = Flask(__name__)
 
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+    username="AngusH579",
+    password="rpisql03angus",
+    hostname="AngusH579.mysql.pythonanywhere-services.com",
+    databasename="AngusH579$rpi-weather-db",
+)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
+
+
+class Weatherdata(db.Model):
+    __tablename__ = "pitsford_weather_scrape"
+
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.TIMESTAMP)
+    temp_c = db.Column(db.Float)
+    feelslike_c = db.Column(db.Float)
+    wx_desc = db.Column(db.String(4096))
+    lat = db.Column(db.Float)
+    long = db.Column(db.Float)
 
 @app.route('/')
 def home():
@@ -28,6 +51,17 @@ def elements():
 @app.route('/rpi')
 def rpi():
 
+=======
+@app.route('/tutoring')
+def tutoring():
+    return render_template('tutoring.html')
+
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+
+@app.route('/personal projects')
+def rpi():
     my_db_comm = DBCommunicator()
     db = my_db_comm.db_connector()
     curs = my_db_comm.create_cursor(db=db)
@@ -48,8 +82,8 @@ def rpi():
     fig.update_yaxes(linecolor="#444")
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('Rpi.html', graphJSON=graphJSON)
+    return render_template('p_projects.html', graphJSON=graphJSON)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
-

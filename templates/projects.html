@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Work Experience</title>
+		<title>Personal Projects</title>
 		<meta charset="utf-8" />
 		<link rel="icon" href="static/images/favicon2.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -30,6 +30,8 @@
 											<li><a href="{{ url_for('home') }}">Home</a></li>
 											<li><a href="{{ url_for('generic') }}">Work Experience</a></li>
 											<li><a href="{{ url_for('elements') }}">About Me</a></li>
+											<li><a href="{{ url_for('tutoring') }}">Tutoring</a></li>
+											<li><a href="{{ url_for('projects') }}">Personal Projects</a></li>
 
 										</ul>
 									</div>
@@ -41,29 +43,25 @@
 				<!-- Main -->
 					<article id="main">
 						<header>
-							<h2>Work Experience</h2>
-							<p></p>
+							<h2>Personal Projects</h2>
+							<p>Since leaving sixth form, I have worked during breaks from study to teach myself Python, and apply it to at home projects to develop my skills</p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
 								<header>
-									<h3>Medicines Counter Assistant</h3>
-									<p>October 2022 - July 2025</p>
+									<h3><a href="https://solarpanelroicalculator.streamlit.app">Solar Panel ROI Calculator</a> | Summer 2025</h3>
 								</header>
-								<p>Working at Tesco Pharmacy as a Counter Assistant, a role which mainly consists of handing out prescriptions, selling over the counter goods and medicines along with giving medical advice with the help of the responsible Pharmacist. November 2022: I have been enrolled into the Buttercups training course to in order to earn the qualification to be a Dispensary Assistant, meaning I would be able to check and make up prescriptions in addition to my previous responsibilities.</p>
-								<p></p>
+								<p>In between my second and third year of university I made an app hosted on streamlit that uses APIs to calculate the estimated time for a solar panel to payback the initial installation and purchase costs from the incurred energy savings.</p>
+								<p>It does this using details specific to the user, including their location, energy costs and energy usage.</p>
 								<hr />
 								<header>
-									<h3>Food Preparation Assistant</h3>
-									<p>April - August 2022</p>
+									<h3><a href="https://algo-trading-bot-f.streamlit.app">Algorithmic Forex Trading Bot</a> | Summer 2024</h3>
 								</header>
-								<p>I worked for TMI Foods (Parent company Dawn Foods Ltd), a food preparation plant. Developed my experience in a fast paced work environment where you have a responsibility as part of a team to complete your task to uphold the overall assignment.</p>
-								<hr />
-								<header>
-									<h3>Sales Assistant</h3>
-									<p>October 2019 - September 2020</p>
-								</header>
-								<p>I worked at Barker Shoes Factory shop Earls Barton; This job helped me gain experience in a true work environment for the first time in my life, during my time there I gained valuable people skills while dealing with customers and work colleagues. </p>
+								<p>Between my first and second year I made an algorithmic trading bot, which employs multiple different forex trading strategies via an oanda demo trading account. It also shows the backtested performance of each strategy.</p>
+								<hr/>
+								<header><h3>Personal Website & Local Weather Tracker | Gap Year 2022-2023</h3></header>
+								<p>During my gap year, I followed Angela Yu's 100 Days of Coding python course to teach myself to code in python. This allowed me to build an early project that simply scraped weather data from nearby weather stations to retrieve information about my local area</p>
+								<div id="chart" class="chart"></div>
 							</div>
 						</section>
 					</article>
@@ -91,6 +89,7 @@
 			<script src="static/assets/js/breakpoints.min.js"></script>
 			<script src="static/assets/js/util.js"></script>
 			<script src="static/assets/js/main.js"></script>
+
 
 	</body>
 </html>
