@@ -18,7 +18,7 @@ class DBCommunicator():
         self.PASSWORD = os.getenv("PASSWORD")
 
     def db_connector(self):
-        print(self.HOST, self.DATABASE, self.USER, self.PASSWORD)
+        #print(self.HOST, self.DATABASE, self.USER, self.PASSWORD)
         db = MySQLdb.connect(host=self.HOST,
             database=self.DATABASE,
             user=self.USER,

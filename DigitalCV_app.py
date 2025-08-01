@@ -52,12 +52,12 @@ def elements():
 def tutoring():
     return render_template('tutoring.html')
 
+#@app.route('/projects')
+#def projects():
+#    return render_template('projects.html')
+
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
-
-@app.route('/personal projects')
-def rpi():
     my_db_comm = DBCommunicator()
     db = my_db_comm.db_connector()
     curs = my_db_comm.create_cursor(db=db)
