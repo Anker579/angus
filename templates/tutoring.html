@@ -1,25 +1,23 @@
 <!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Tutoring</title>
 		<meta charset="utf-8" />
-		<link rel="icon" href="static/images/favicon2.ico">
+		<link rel="icon" href="{{ url_for('static', filename='images/favicon2.ico') }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="static/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+		<style>
+			/* Simple styling for flash messages - you can customize this or add to main.css */
+			.flash-success { background-color: #d4edda; color: #155724; padding: 1em; margin-bottom: 1em; border: 1px solid #c3e6cb; border-radius: 5px; }
+			.flash-error { background-color: #f8d7da; color: #721c24; padding: 1em; margin-bottom: 1em; border: 1px solid #f5c6cb; border-radius: 5px; }
+		</style>
 	</head>
 	<body class="is-preload">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+		<div id="page-wrapper">
 
-				<!-- Header -->
-					<header id="header" class="alt">
+				<header id="header" class="alt">
 						<h1><a href="{{ url_for('home') }}">Angus Howard - Digital CV</a></h1>
 						<nav id="nav">
 							<ul>
@@ -32,7 +30,6 @@
 											<li><a href="{{ url_for('elements') }}">About Me</a></li>
 											<li><a href="{{ url_for('tutoring') }}">Tutoring</a></li>
 											<li><a href="{{ url_for('projects') }}">Personal Projects</a></li>
-
 										</ul>
 									</div>
 								</li>
@@ -40,8 +37,7 @@
 						</nav>
 					</header>
 
-				<!-- Main -->
-					<article id="main">
+				<article id="main">
 						<header>
 							<h2>Tutoring</h2>
 							<p>I also work part-time as a Physics and Maths Tutor for a range of years and exam boards.</p>
@@ -84,32 +80,94 @@
 									<li><b>Get the same for less</b>, MyTutor takes about half of what you pay for lessons, for online private lessons I offer £20ph, with no middleman paying for tutoring becomes easier to afford.</li>
 								</ul>
 
-							</div>
+								<hr />
+
+								<section>
+									<header>
+										<h3>Leave a Review</h3>
+									</header>
+
+									{% with messages = get_flashed_messages(with_categories=true) %}
+									  {% if messages %}
+										{% for category, message in messages %}
+										  <div class="flash-{{ category }}">{{ message }}</div>
+										{% endfor %}
+									  {% endif %}
+									{% endwith %}
+
+									<form method="post" action="{{ url_for('tutoring') }}">
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall">
+												<label for="reviewer_name">Your Name</label>
+												<input type="text" name="reviewer_name" id="reviewer_name" value="" required />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<label for="rating">Rating</label>
+												<select name="rating" id="rating" required>
+													<option value="" disabled selected>- Select Rating -</option>
+													<option value="5">5 - Excellent</option>
+													<option value="4">4 - Very Good</option>
+													<option value="3">3 - Good</option>
+													<option value="2">2 - Fair</option>
+													<option value="1">1 - Poor</option>
+												</select>
+											</div>
+											<div class="col-12">
+												<label for="review_text">Review</label>
+												<textarea name="review_text" id="review_text" placeholder="Enter your review..." rows="4" required></textarea>
+											</div>
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" value="Submit Review" class="primary" /></li>
+													<li><input type="reset" value="Reset" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</section>
+
+								<hr />
+
+								<section>
+									<header>
+										<h3>What People Are Saying</h3>
+									</header>
+									
+									{% for review in reviews %}
+										<div class="review-card" style="margin-bottom: 1.5em;">
+											<h4>{{ review.reviewer_name }} - {{ review.rating }}/5 Stars</h4>
+											<p style="margin-bottom: 0.5em;">"{{ review.review_text }}"</p>
+											<p style="font-size: 0.8em; color: #888;">Posted on: {{ review.review_date.strftime('%d %B %Y') }}</p>
+										</div>
+									{% else %}
+										<p>No reviews have been approved yet. Be the first to leave one!</p>
+									{% endfor %}
+								</section>
+
+								</div>
 						</section>
 					</article>
 
-				<!-- Footer -->
-					<footer id="footer">
+				<footer id="footer">
 						<ul class="icons">
 							<li><a href="https://www.facebook.com/angus.howard.9" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="angushoward03gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:angushoward03@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 							<li><a href="https://github.com/Anker579" class="icon brands fa-github"><span class="label">Github</span></a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Angus Howard</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</footer>
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="static/assets/js/jquery.min.js"></script>
-			<script src="static/assets/js/jquery.scrollex.min.js"></script>
-			<script src="static/assets/js/jquery.scrolly.min.js"></script>
-			<script src="static/assets/js/browser.min.js"></script>
-			<script src="static/assets/js/breakpoints.min.js"></script>
-			<script src="static/assets/js/util.js"></script>
-			<script src="static/assets/js/main.js"></script>
+		<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
 	</body>
 </html>
