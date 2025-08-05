@@ -72,7 +72,7 @@ def elements():
 
 # --- NEW TUTORING ROUTE ---
 @app.route('/tutoring', methods=['GET', 'POST'])
-def tutoring_page():
+def tutoring():
     # --- Part 1: Handle the form submission (POST request) ---
     if request.method == 'POST':
         conn = None
