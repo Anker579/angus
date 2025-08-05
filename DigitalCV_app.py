@@ -30,7 +30,7 @@ db = SQLAlchemy(app)
 reviews_db_host = 'AngusH579.mysql.pythonanywhere-services.com'
 reviews_db_user = 'AngusH579'
 reviews_db_password = 'rpisql03angus' # <-- IMPORTANT: ADD YOUR PASSWORD
-reviews_db_name = 'AngusH579$reviews'     # <-- IMPORTANT: USE YOUR DB NAME FOR REVIEWS
+reviews_db_name = 'AngusH579$rpi-weather-db'     # <-- IMPORTANT: USE YOUR DB NAME FOR REVIEWS
 
 def get_reviews_db_connection():
     """Establishes a connection to the reviews database."""
