@@ -83,7 +83,7 @@ def tutoring():
 
             if not reviewer or not rating or not review_text:
                 flash('All fields are required!', 'error')
-                return redirect(url_for('tutoring_page'))
+                return redirect(url_for('tutoring'))
 
             conn = get_reviews_db_connection()
             cursor = conn.cursor()
@@ -101,7 +101,7 @@ def tutoring():
         finally:
             if conn: conn.close()
         
-        return redirect(url_for('tutoring_page'))
+        return redirect(url_for('tutoring'))
 
     # --- Part 2: Display the page (GET request) ---
     conn = None
