@@ -91,8 +91,8 @@ def tutoring():
             values = (reviewer, int(rating), review_text)
             cursor.execute(sql, values)
             conn.commit()
-            
-            flash('Thank you for your review! It will be displayed once approved.', 'success')
+
+            flash('Thank you for your review!', 'success')
 
         except Exception as e:
             print(f"Error inserting review: {e}")
@@ -100,7 +100,7 @@ def tutoring():
             if conn: conn.rollback()
         finally:
             if conn: conn.close()
-        
+
         return redirect(url_for('tutoring'))
 
     # --- Part 2: Display the page (GET request) ---
