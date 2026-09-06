@@ -6,6 +6,10 @@ import plotly
 import plotly.express as px
 from db_data_fetcher import DBCommunicator
 import MySQLdb # <-- Added for the review system
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
 # IMPORTANT: Add a secret key for flash messaging to work.
@@ -14,10 +18,10 @@ app.secret_key = 'a-very-secret-and-random-string'
 
 # --- Connection for Weather Data (using SQLAlchemy) ---
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="AngusH579",
-    password="rpisql03angus", # Your weather-db password
-    hostname="AngusH579.mysql.pythonanywhere-services.com",
-    databasename="AngusH579$rpi-weather-db",
+    username=os.getenv("USER"),
+    password=os.getenv("PASSWORD"), # Your weather-db password
+    hostname=os.getenv("HOST"),
+    databasename=os.getenv("DATABASE"),
 )
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
@@ -27,10 +31,10 @@ db = SQLAlchemy(app)
 
 # --- Connection Details for the Reviews Database ---
 # Replace with your new database details for the reviews table
-reviews_db_host = 'AngusH579.mysql.pythonanywhere-services.com'
-reviews_db_user = 'AngusH579'
-reviews_db_password = 'rpisql03angus' # <-- IMPORTANT: ADD YOUR PASSWORD
-reviews_db_name = 'AngusH579$rpi-weather-db'     # <-- IMPORTANT: USE YOUR DB NAME FOR REVIEWS
+reviews_db_host = os.getenv("HOST")
+reviews_db_user = os.getenv("USER")
+reviews_db_password = os.getenv("PASSWORD") # <-- IMPORTANT: ADD YOUR PASSWORD
+reviews_db_name = os.getenv("DATABASE")     # <-- IMPORTANT: USE YOUR DB NAME FOR REVIEWS
 
 def get_reviews_db_connection():
     """Establishes a connection to the reviews database."""
