@@ -4,6 +4,7 @@ import json
 from dotenv import load_dotenv
 import plotly
 import plotly.express as px
+from energy_api.routes import energy_api
 from db_data_fetcher import DBCommunicator
 import MySQLdb # <-- Added for the review system
 import os
@@ -12,6 +13,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
+app.register_blueprint(energy_api, url_prefix="/api")
 # IMPORTANT: Add a secret key for flash messaging to work.
 # Change this to a random, secure string.
 app.secret_key = 'a-very-secret-and-random-string'
