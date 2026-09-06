@@ -116,3 +116,120 @@ def add_article():
         "article_id": article_id,
         "status": "pending"
     }), 201
+
+@energy_api.route("/analyses", methods=["POST"])
+def add_analysis():
+
+    api_key = request.headers.get("X-API-Key")
+
+    if api_key != os.getenv("ENERGY_API_KEY"):
+        return jsonify({"error": "unauthorised - wrong key"}), 401
+
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "JSON body required"}), 400
+
+    article_id = data.get("article_id")
+    model = data.get("model")
+    prompt_version = data.get("prompt_version")
+    title_match = data.get("title_match")
+    stocks = data.get("stocks")
+
+    if article_id is None or not model or not prompt_version:
+        return jsonify({
+            "error": "article_id, model and prompt_version are required"
+        }), 400
+
+    if not isinstance(stocks, list):
+        return jsonify({
+            "error": "stocks must be a list"
+        }), 400
+
+    connection = get_energy_db_connection()
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(
+            "SELECT id FROM articles WHERE id = %s",
+            (article_id,)
+        )
+
+        if cursor.fetchone() is None:
+            connection.rollback()
+            cursor.close()
+            connection.close()
+
+            return jsonify({
+                "error": "article not found"
+            }), 404
+
+        insert_sql = """
+            INSERT INTO analyses (
+                article_id,
+                symbol,
+                sentiment,
+                confidence,
+                reason,
+                model,
+                prompt_version
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
+
+        for stock in stocks:
+            cursor.execute(
+                insert_sql,
+                (
+                    article_id,
+                    stock.get("symbol"),
+                    stock.get("sentiment"),
+                    stock.get("confidence"),
+                    stock.get("reason"),
+                    model,
+                    prompt_version
+                )
+            )
+
+        cursor.execute(
+            """
+            UPDATE articles
+            SET status = 'analysed',
+                title_match = %s
+            WHERE id = %s
+            """,
+            (title_match, article_id)
+        )
+
+        connection.commit()
+
+    except MySQLdb.IntegrityError:
+        connection.rollback()
+
+        cursor.close()
+        connection.close()
+
+        return jsonify({
+            "error": "analysis conflicts with existing database data"
+        }), 409
+
+    except Exception as error:
+        connection.rollback()
+
+        print(f"Error saving analysis: {error}")
+
+        cursor.close()
+        connection.close()
+
+        return jsonify({
+            "error": "failed to save analysis"
+        }), 500
+
+    cursor.close()
+    connection.close()
+
+    return jsonify({
+        "article_id": article_id,
+        "status": "analysed",
+        "analyses_added": len(stocks)
+    }), 201
